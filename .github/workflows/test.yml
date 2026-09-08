@@ -1,0 +1,16 @@
+  name: Test Project            # Nome do Workflow: Define como o processo será identificado na aba "Actions" do GitHub.
+  on: push                     # Gatilho: Define que este fluxo rodará automaticamente sempre que houver um 'push' de commits.
+  jobs:                        # Jobs: Agrupa uma ou mais tarefas (trabalhos) que serão executadas no workflow.
+    test:                      # Identificador do Job: Nome dado a um conjunto específico de passos (aqui chamado de test).
+      runs-on: ubuntu-latest   # SO: Define o ambiente (máquina virtual) que rodará o código (o servidor do GitHub).
+      steps:                   # Steps: Lista sequencial de ações que o Job deve executar.
+        - name: Get code       # Passo: Dá um nome amigável a este passo para facilitar a leitura no log.
+          uses: actions/checkout@v3 # Action: Comando/Plugin oficial do GitHub para baixar o repositório atual na máquina virtual.
+        - name: Install NodejS
+          uses: actions/setup-node@v3  
+          with:
+            node-version: 18   # Configurando que o Node deve usar a versão 20
+        - name: INstall dependencies
+          run: npm ci          # Instala as dependências de forma limpa e rápida
+        - name: Run tests
+          run: npm test
