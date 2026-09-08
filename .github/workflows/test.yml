@@ -17,4 +17,4 @@
         - name: usando meu segredo
           env:
             KEY: ${{secrets.SECRET}} 
-          run: "O segredo foi carregado com sucesso" # run obrigatório
+          run: echo "O segredo foi carregado com sucesso" # run obrigatório
