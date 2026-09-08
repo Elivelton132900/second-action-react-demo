@@ -7,9 +7,9 @@
         - name: Get code       # Passo: Dá um nome amigável a este passo para facilitar a leitura no log.
           uses: actions/checkout@v3 # Action: Comando/Plugin oficial do GitHub para baixar o repositório atual na máquina virtual.
         - name: Install NodejS
-          uses: actions/setup-node@v3  
+          uses: actions/setup-node@v4
           with:
-            node-version: 18   # Configurando que o Node deve usar a versão 20
+            node-version: '20'   # Configurando que o Node deve usar a versão 20
         - name: INstall dependencies
           run: npm ci          # Instala as dependências de forma limpa e rápida
         - name: Run tests
