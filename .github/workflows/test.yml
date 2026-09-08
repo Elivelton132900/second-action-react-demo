@@ -14,3 +14,6 @@
           run: npm ci          # Instala as dependências de forma limpa e rápida
         - name: Run tests
           run: npm test
+        - name: usando meu segredo
+          env:
+            KEY: ${{secrets.SECRET}} 
