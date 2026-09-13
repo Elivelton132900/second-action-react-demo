@@ -19,6 +19,7 @@
             KEY: ${{secrets.SECRET}} 
           run: echo "O segredo foi carregado com sucesso" # run obrigatório
     deploy:
+      needs: test
       runs-on: ubuntu-latest
       steps:                   
         - name: Get code   
