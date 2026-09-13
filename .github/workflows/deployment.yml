@@ -1,4 +1,4 @@
-  name: Test Project            # Nome do Workflow: Define como o processo será identificado na aba "Actions" do GitHub.
+  name: Deploy Project            # Nome do Workflow: Define como o processo será identificado na aba "Actions" do GitHub.
   on: push                     # Gatilho: Define que este fluxo rodará automaticamente sempre que houver um 'push' de commits.
   jobs:                        # Jobs: Agrupa uma ou mais tarefas (trabalhos) que serão executadas no workflow.
     test:                      # Identificador do Job: Nome dado a um conjunto específico de passos (aqui chamado de test).
@@ -18,3 +18,18 @@
           env:
             KEY: ${{secrets.SECRET}} 
           run: echo "O segredo foi carregado com sucesso" # run obrigatório
+  deploy:
+    runs-on: ubuntu-latest
+          steps:                   
+            - name: Get code   
+              uses: actions/checkout@v4
+            - name: Install NodejS
+              uses: actions/setup-node@v4
+            with:
+              node-version: '20'
+            - name: Install dependencies
+              run: npm ci  
+            - name: Build Project
+              run: npm run build 
+            - name: Deploy
+              run: echo "Deploy"
